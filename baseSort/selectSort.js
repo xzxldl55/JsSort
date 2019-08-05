@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 /**
  * 选择排序：类似插入排，分已排区间与未排区间，每次从未排中找到一个min/max（顺序，逆序）放到已排序末尾
  *          即与冒泡相反，冒泡为已排在后面，选择在前面
@@ -14,7 +15,7 @@ const selectSort = arr => {
     const length = arr.length
     if (length <= 1) return
 
-    let currentIndex, minCurrentIndex, searchIndex, temEle
+    let currentIndex, minCurrentIndex, searchIndex
     for (currentIndex = 0; currentIndex < length; currentIndex++) {
         minCurrentIndex = currentIndex // 初始化minEle
         searchIndex = length
@@ -23,9 +24,7 @@ const selectSort = arr => {
                 minCurrentIndex = searchIndex // 改变最小值序列
             searchIndex--
         }
-        temEle = arr[currentIndex]
-        arr[currentIndex] = arr[minCurrentIndex]
-        arr[minCurrentIndex] = temEle
+        [arr[currentIndex], arr[minCurrentIndex]] = [arr[minCurrentIndex], arr[currentIndex]]
     }
 }
 
@@ -35,8 +34,8 @@ let arr = [],
 for (let i = 0; i < 100000; i++) {
     arr.push(Math.ceil(Math.random()*100))
 }
-console.log(arr)
+// console.log(arr)
 selectSort(arr)
 let endTime = (new Date()).getTime()
-console.log('耗时为：', (endTime - startTime)/1000, 's')
-console.log(arr)
+console.log(chalk.green('耗时为：', (endTime - startTime)/1000, 's'))
+// console.log(chalk.blue('[',arr,']'))

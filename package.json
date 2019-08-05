@@ -1,0 +1,11 @@
+{
+  "name": "js-sort",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bubble": "node ./baseSort/bubbleSort.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
+}
